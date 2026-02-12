@@ -1,2 +1,14 @@
 @use "./global/colors.scss";
 @use "./global/fonts.scss";
+@use "./landing.scss";
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
