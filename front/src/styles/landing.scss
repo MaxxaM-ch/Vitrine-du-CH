@@ -1,28 +1,172 @@
 @import "./global/colors.scss";
 
-#landingContainer {
+// ==========================================================================
+// Layout
+// ==========================================================================
+
+#landingPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+
+    @media (max-width: 800px) {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+}
+
+// ==========================================================================
+// Top banner
+// ==========================================================================
+
+#topBanner {
     width: 100%;
-    height: 100%;
+    flex-shrink: 0;
+    background-color: $ch-red;
+    padding: clamp(0.6em, 2vh, 1.25em) clamp(0.75em, 3vw, 1.5em);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topBanner__badge {
+    width: 44px;
+    height: 44px;
+    border: 1px solid $primary-white;
+    border-radius: 50%;
+    color: $primary-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    letter-spacing: 0.03em;
+}
+
+.topBanner__logo {
+    margin: 0;
+    color: $primary-white;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.1;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+// ==========================================================================
+// Bento grid
+// ==========================================================================
+
+#landingContainer {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr) auto;
+    grid-template-areas:
+        "topleft   circle     photoRight"
+        "photoLeft circle     photoRight"
+        "photoLeft circle     accent"
+        "ticket    ticket     ticket";
     grid-column-gap: 0px;
     grid-row-gap: 2px;
+    overflow: hidden;
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-template-areas:
+            "topleft"
+            "photoLeft"
+            "circle"
+            "photoRight"
+            "accent"
+            "ticket";
+        overflow: visible;
+    }
+}
+
+.tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 800px) {
+        min-height: 10em;
+    }
+}
+
+.tile--topLeft {
+    grid-area: topleft;
+}
+
+.tile--photo {
+    background-color: $placeholder-grey;
+}
+
+.tile--photoLeft {
+    grid-area: photoLeft;
+}
+
+.tile--photoRight {
+    grid-area: photoRight;
+}
+
+.tile--accent {
+    grid-area: accent;
+}
+
+.tile--red {
+    background-color: $ch-red;
+}
+
+.tile--blue {
+    background-color: $ch-blue;
+}
+
+.tile__label {
+    color: rgba($primary-black, 0.35);
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.tile__oversized {
+    line-height: 0.8;
+    letter-spacing: -0.03em;
+    color: $primary-white;
+    font-size: clamp(3rem, min(14vw, 16vh), 11rem);
+}
+
+// Longer words (eg. "GAME") need to stay within the tile's width, unlike short ones like "ON"
+.tile__oversized--fit {
+    font-size: clamp(2.5rem, min(9vw, 14vh), 7rem);
 }
 
 #circleContainer {
+    grid-area: circle;
     width: 100%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: $placeholder-grey;
 }
 
 #centerCircle {
-    width: 24em;
-    min-width: 12em;
-    height: 24em;
-    min-height: 12em;
+    width: min(24em, 90%, 60vh);
+    aspect-ratio: 1 / 1;
+    min-width: 6em;
     border: 1px solid $primary-black;
     border-radius: 50%;
     display: flex;
@@ -33,7 +177,7 @@
 // Mixin réutilisable
 @mixin corner-borders($color, $size, $thickness) {
   position: relative;
-  
+
   &::before,
   &::after {
     content: '';
@@ -44,14 +188,14 @@
     border-style: solid;
     border-width: 0;
   }
-  
+
   &::before {
     top: 0;
     left: 0;
     border-top-width: $thickness;
     border-left-width: $thickness;
   }
-  
+
   &::after {
     top: 0;
     right: 0;
@@ -87,22 +231,85 @@
         right: 0;
         border-bottom-width: $thickness;
         border-right-width: $thickness;
-    }   
+    }
   }
 }
 
 #logoContainer {
     @include corner-borders($primary-black, 10px, 1px);
-    width: 15em;
-    height: 10em;
+    width: min(15em, 65%);
+    height: min(10em, 45%);
     .cornerWrapper {
         display: flex;
         justify-content: center;
         align-items: center;
     }
     img {
-        width: 15em;
-        min-width: 8em;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
     }
+}
+
+// ==========================================================================
+// Ticket call-to-action
+// ==========================================================================
+
+#ticketCta {
+    grid-area: ticket;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.75em, 3vh, 2.5em) clamp(1em, 4vw, 3em);
+}
+
+.ticketCta__frame {
+    @include corner-borders($primary-black, 14px, 1px);
+    display: flex;
+
+    .cornerWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35em;
+        padding: 0.75em 1.5em;
+    }
+}
+
+.ticketCta__line1 {
+    margin: 0;
+    font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.ticketCta__line2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.ticketCta__arrow {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+// ==========================================================================
+// Bottom stripe bar
+// ==========================================================================
+
+#stripeBar {
+    width: 100%;
+    height: 8px;
+    flex-shrink: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        $ch-red 0 48px,
+        $primary-white 48px 96px,
+        $ch-blue 96px 144px
+    );
 }

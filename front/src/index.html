@@ -7,18 +7,57 @@
     <link rel="stylesheet" href="./styles/main.css">
 </head>
     <body>
-        <div id="circleContainer">
-            <div id="centerCircle">
-                <div id="logoContainer">
-                    <div class="cornerWrapper">
-                        <img src="./assets/images/CH_logo_brodé.png" alt="Logo du CH">
+        <div id="landingPage">
+            <header id="topBanner">
+                <div class="topBanner__badge topBanner__badge--left" aria-hidden="true">24+</div>
+                <p class="topBanner__logo">Canadiens<br>de Montreal</p>
+                <div class="topBanner__badge topBanner__badge--right" aria-hidden="true">CH</div>
+            </header>
+
+            <div id="landingContainer">
+                <div class="tile tile--blue tile--topLeft">
+                    <span class="tile__oversized tile__oversized--fit">GAME</span>
+                </div>
+
+                <div class="tile tile--photo tile--photoLeft">
+                    <span class="tile__label">Photo joueur</span>
+                </div>
+
+                <div id="circleContainer">
+                    <div id="centerCircle">
+                        <div id="logoContainer">
+                            <div class="cornerWrapper">
+                                <img src="./assets/images/CH_logo_brodé.png" alt="Logo du CH">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>  
-        </div>
-        
-        <!-- <div id="landingContainer">
 
-        </div> -->
+                <div class="tile tile--photo tile--photoRight">
+                    <span class="tile__label">Photo joueur</span>
+                </div>
+
+                <div class="tile tile--accent tile--blue">
+                    <span class="tile__oversized">ON</span>
+                </div>
+
+                <div id="ticketCta">
+                    <div class="ticketCta__frame">
+                        <div class="cornerWrapper">
+                            <p class="ticketCta__line1">Single Game</p>
+                            <p class="ticketCta__line2">
+                                Tickets
+                                <svg class="ticketCta__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                On sale now!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stripeBar" role="presentation"></div>
+        </div>
     </body>
 </html>

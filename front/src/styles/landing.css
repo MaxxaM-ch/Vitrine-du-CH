@@ -1,0 +1,95 @@
+#landingContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 2px;
+}
+
+#circleContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#centerCircle {
+  width: 24em;
+  min-width: 12em;
+  height: 24em;
+  min-height: 12em;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logoContainer {
+  position: relative;
+}
+#logoContainer::before, #logoContainer::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 0;
+}
+#logoContainer::before {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+#logoContainer::after {
+  top: 0;
+  right: 0;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+#logoContainer > .cornerWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#logoContainer > .cornerWrapper::before, #logoContainer > .cornerWrapper::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 0;
+}
+#logoContainer > .cornerWrapper::before {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+#logoContainer > .cornerWrapper::after {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+#logoContainer {
+  width: 15em;
+  height: 10em;
+}
+#logoContainer .cornerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logoContainer img {
+  width: 15em;
+  min-width: 8em;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=landing.css.map */
