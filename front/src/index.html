@@ -19,22 +19,25 @@
                     <span class="tile__oversized tile__oversized--fit">GAME</span>
                 </div>
 
-                <div class="tile tile--photo tile--photoLeft">
-                    <span class="tile__label">Photo joueur</span>
+                <div class="tile tile--photo tile--photoLeft carousel" data-carousel-role="photo-left">
+                    <img class="carousel__layer is-visible" src="./assets/images/players/players_1.png" alt="Photo de joueur">
+                    <img class="carousel__layer" src="" alt="Photo de joueur">
                 </div>
 
                 <div id="circleContainer">
                     <div id="centerCircle">
                         <div id="logoContainer">
-                            <div class="cornerWrapper">
-                                <img src="./assets/images/CH_logo_brodé.png" alt="Logo du CH">
+                            <div class="cornerWrapper carousel" data-carousel-role="logo">
+                                <img class="carousel__layer is-visible" src="./assets/images/logos/logo_1.png" alt="Logo de l'équipe">
+                                <img class="carousel__layer" src="" alt="Logo de l'équipe">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tile tile--photo tile--photoRight">
-                    <span class="tile__label">Photo joueur</span>
+                <div class="tile tile--photo tile--photoRight carousel" data-carousel-role="photo-right">
+                    <img class="carousel__layer is-visible" src="./assets/images/players/players_2.png" alt="Photo de joueur">
+                    <img class="carousel__layer" src="" alt="Photo de joueur">
                 </div>
 
                 <div class="tile tile--accent tile--blue">
@@ -59,5 +62,6 @@
 
             <div id="stripeBar" role="presentation"></div>
         </div>
+        <script src="./scripts/carousel.js" defer></script>
     </body>
 </html>
